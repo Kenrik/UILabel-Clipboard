@@ -15,8 +15,11 @@
 
 - (id) initWithFrame: (CGRect) frame
 {
-    [super initWithFrame:frame];
-    [self attachTapHandler];
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self attachTapHandler];
+
+    }
     return self;
 }
 
@@ -30,7 +33,7 @@
 
 - (void) copy: (id) sender
 {
-    NSLog(@"Copy handler, label: “%@”.", self.text);
+    [[UIPasteboard generalPasteboard] setString:self.text];
 }
 
 - (BOOL) canPerformAction: (SEL) action withSender: (id) sender

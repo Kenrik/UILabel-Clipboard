@@ -1,6 +1,6 @@
-#import "Application.h"
+#import "AppDelegate.h"
 
-@implementation Application
+@implementation AppDelegate
 @synthesize window, controller;
 
 - (void) applicationDidFinishLaunching: (UIApplication*) application

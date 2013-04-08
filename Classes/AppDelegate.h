@@ -1,4 +1,4 @@
-@interface Application : NSObject<UIApplicationDelegate>
+@interface AppDelegate : NSObject<UIApplicationDelegate>
 
 @property(retain) IBOutlet UIViewController *controller;
 
