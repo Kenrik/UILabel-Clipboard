@@ -7,10 +7,9 @@
 - (void) attachTapHandler
 {
     [self setUserInteractionEnabled:YES];
-    UIGestureRecognizer *touchy = [[UITapGestureRecognizer alloc]
+    UIGestureRecognizer *touchy = [[UILongPressGestureRecognizer alloc]
         initWithTarget:self action:@selector(handleTap:)];
     [self addGestureRecognizer:touchy];
-    [touchy release];
 }
 
 - (id) initWithFrame: (CGRect) frame
@@ -22,18 +21,30 @@
     }
     return self;
 }
-
-- (void) awakeFromNib
-{
-    [super awakeFromNib];
-    [self attachTapHandler];
+- (id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self attachTapHandler];
+    }
+    return self;
 }
 
+- (void)setTarget:(id)target forCopyAction:(SEL)action{
+    copyTarget = target;
+    copyAction = action;
+}
 #pragma mark Clipboard
 
 - (void) copy: (id) sender
 {
-    [[UIPasteboard generalPasteboard] setString:self.text];
+    if (copyTarget) {
+        if ([copyTarget respondsToSelector:copyAction]) {
+            [copyTarget performSelector:copyAction];
+        }
+    } else {
+        [[UIPasteboard generalPasteboard] setString:self.text];
+    }
+
 }
 
 - (BOOL) canPerformAction: (SEL) action withSender: (id) sender
@@ -45,8 +56,12 @@
 {
     [self becomeFirstResponder];
     UIMenuController *menu = [UIMenuController sharedMenuController];
-    [menu setTargetRect:self.frame inView:self.superview];
-    [menu setMenuVisible:YES animated:YES];
+    if ([menu isMenuVisible]) {
+    } else {
+        [menu setTargetRect:self.frame inView:self.superview];
+        [menu setMenuVisible:YES animated:YES];
+    }
+
 }
 
 - (BOOL) canBecomeFirstResponder

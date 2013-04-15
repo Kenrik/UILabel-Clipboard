@@ -1,6 +1,6 @@
 @interface AppDelegate : NSObject<UIApplicationDelegate>
 
-@property(retain) IBOutlet UIViewController *controller;
+@property(nonatomic, strong) IBOutlet UIViewController *controller;
 
 @end
 

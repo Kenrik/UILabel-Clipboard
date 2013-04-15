@@ -9,11 +9,5 @@
     [window makeKeyAndVisible];
 }
 
-- (void) dealloc
-{
-    [window release];
-    [controller release];
-    [super dealloc];
-}
 
 @end
