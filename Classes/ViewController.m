@@ -1,0 +1,40 @@
+//
+//  ViewController.m
+//  Copy
+//
+//  Created by Zachary Brass on 4/15/13.
+//
+//
+
+#import "ViewController.h"
+
+@interface ViewController ()
+
+@end
+
+@implementation ViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [customCopyTextLabel setTarget:self forCopyAction:@selector(customCopy:)];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+- (void)customCopy:(id)sender{
+    [[UIPasteboard generalPasteboard] setString:@"Check out this custom copy text"];
+}
+@end

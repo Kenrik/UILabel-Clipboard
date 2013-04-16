@@ -3,10 +3,12 @@
 @implementation AppDelegate
 @synthesize window, controller;
 
-- (void) applicationDidFinishLaunching: (UIApplication*) application
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [window addSubview:controller.view];
+    controller = [[ViewController alloc] init];
+    [window setRootViewController:controller];
     [window makeKeyAndVisible];
+    return YES;
 }
 
 

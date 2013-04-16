@@ -1,6 +1,7 @@
+#import "ViewController.h"
 @interface AppDelegate : NSObject<UIApplicationDelegate>
 
-@property(nonatomic, strong) IBOutlet UIViewController *controller;
+@property(nonatomic, strong) ViewController *controller;
 
 @end
 

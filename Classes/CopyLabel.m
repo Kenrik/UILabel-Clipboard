@@ -39,7 +39,7 @@
 {
     if (copyTarget) {
         if ([copyTarget respondsToSelector:copyAction]) {
-            [copyTarget performSelector:copyAction];
+            [copyTarget performSelector:copyAction withObject:self];
         }
     } else {
         [[UIPasteboard generalPasteboard] setString:self.text];
