@@ -27,6 +27,8 @@
 {
     [super viewDidLoad];
     [customCopyTextLabel setTarget:self forCopyAction:@selector(customCopy:)];
+    customCopyTextLabel.highlightedTextColor = [UIColor blueColor];
+    copyTextLabel.highlightedTextColor = [UIColor blueColor];
 }
 
 - (void)didReceiveMemoryWarning
